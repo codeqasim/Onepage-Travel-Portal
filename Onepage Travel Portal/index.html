@@ -1,0 +1,280 @@
+<!doctype html>
+    <html>
+    <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta charset="utf-8">
+    <title>Travelhope</title>
+    <link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/flags.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/sidebar.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="assets/css/daterangepicker.min.css" />
+    <link rel="stylesheet" href="assets/css/rzslider.min.css" />
+    <link rel="stylesheet" href="assets/css/angular-material.min.css" />
+    <script src="assets/js/jquery-1.12.0.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/angular/angular.min.js"></script>
+    <script src="assets/js/angular/angular-route.js"></script>
+    <script src="assets/js/ui-bootstrap-tpls-1.3.1.js"></script>
+    <script src="assets/js/angular/angular-sanitize.min.js"></script>
+    <script src="assets/js/angular/angular-animate.min.js"></script>
+    <script src="assets/js/angular/moment.min.js"></script>
+    <script src="assets/js/angular/daterangepicker.min.js"></script>
+    <script src="assets/js/angular/angular-daterangepicker.min.js"></script>
+    <script src="assets/js/angular/rzslider.min.js"></script>
+    <script src="assets/js/angular/app.js"></script>
+    <script>$(window).load(function(){$('#status').fadeOut();$('#preloader').delay(350).fadeOut('slow');$('body').delay(350).css({'overflow':'visible'})})</script>
+    </head>
+    <body class="body" ng-app="travelhope">
+        <div id="preloader">
+            <div class="loader absolute-center"></div>
+        </div>
+        <div class="site-container">
+            <div class="site-inner">
+                <div class="content-sidebar-wrap">
+                    <main class="content">
+                        <div class="head_well cloud_header has_background" data-background="#CACED7" data-background-image="hero_bg1.jpg">
+                            <div class="bg_layer home_bg_layer" style="height:100%;background-color:#CACED7;background-image:url(assets/img/hero_bg1.jpg);background-size:cover;">
+                                <div class="cloud-1"></div>
+                                <div class="cloud-2"></div>
+                                <div class="man-on-rock"></div>
+                                <p style="margin:10px" class="text-right"><strong>BETA</strong> v1.0</p>
+                                <img style="width:250px;margin-top:150px" class="center-block" src="assets/img/logo.png" alt="" />
+                            </div>
+                        </div>
+                    </main>
+                </div>
+            </div>
+        </div>
+        <div style="position:absolute;width:100%;z-index:1056" class="container-fluid" ng-controller="mainController">
+            <div class="row" ng-init="showornot=false">
+                <div ng-include="'sidebar.html'"></div>
+                <div ng-include="'menu.html'"></div>
+                <div ng-include="'search.html'"></div>
+                <div ng-include="'listing.html'" ng-show="showornot"></div>
+                <div ng-include="'details.html'"></div>
+            </div>
+
+
+          <div class="text-center">
+
+
+       		<button type="button" class="btn btn-demo" data-toggle="modal" data-target="#myModal2">
+       			Right Sidebar Modal
+       		</button>
+       	</div>
+
+
+       	<!-- Modal -->
+       	<div class="modal right fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+       		<div class="modal-dialog" role="document">
+       			<div class="modal-content">
+
+       				<div class="modal-header">
+       					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       					<h4 class="modal-title" id="myModalLabel2">Right Sidebar</h4>
+       				</div>
+
+          <div class="height row">
+          <div class="panel-body">
+          <div class="col-md-6">
+          <div class="col-md-4">
+           <img src="assets/img/hotel.jpg" class="img-responsive" alt="" />
+           <h4>Hotel Golden Place <br>
+           <small class="mute">Sheikh Zayed Road</small>
+           <br>
+           <i class="star text-warning fa fa-star"></i>
+           <i class="star text-warning fa fa-star"></i>
+           <i class="star text-warning fa fa-star"></i>
+           <i class="star text-warning fa fa-star-o"></i>
+           <i class="star text-warning fa fa-star-o"></i>
+           </h4>
+          </div>
+          <div class="clearfix"></div>
+          <hr>
+          <div class="col-md-12">
+             <p style="font-size:12px" class="go-right RTL"> </p><p><b>Know Before You Go</b> <br></p><ul>  <li>Only registered guests are allowed in the guestrooms. </li>  </ul><p></p><p><b>Fees</b> <br></p><p>The following fees and deposits are charged by the property at time of service, check-in, or check-out. </p>
+             <p style="font-size:12px" class="go-right RTL"> A tourism fee is imposed by the city and collected at the property. The fee is AED 20 for the first bedroom per night, and increases by AED 20 per night for each additional bedroom. For further details, please contact the property using the information contained in your confirmation email.</p>
+          </div>
+          </div>
+          <div class="col-md-6">
+            <form role="form" action="" method="POST">
+                  <div class="col-md-4">
+                    <div class="form-group ">
+                      <label class="required go-right">First Name</label>
+                      <input class="form-control" id="card-holder-firstname" type="text" placeholder="First Name" name="firstName" value="Test Booking">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group ">
+                      <label class="required go-right">Last Name</label>
+                      <input class="form-control" id="card-holder-lastname" type="text" placeholder="Last Name" name="lastName" value="Test Booking">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group ">
+                      <label class="required  go-right">Email</label>
+                      <input class="form-control" id="card-holder-email" type="text" placeholder="Email" name="email" value="test@hotmail.com">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group ">
+                      <label class="required go-right">Mobile Number</label>
+                      <input class="form-control" id="card-holder-phone" type="text" placeholder="Contact Number" name="phone" value="1258463578">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group ">
+                      <label class="required go-right">Country</label>
+                      <select class="form-control">
+                      <option>Select Country</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group ">
+                      <label class="required go-right">State</label>
+                      <input id="card-holder-state" class="form-control" type="text" placeholder="State" name="province" value="WA">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group ">
+                      <label class="required  go-right">City</label>
+                      <input id="card-holder-city" class="form-control" type="text" placeholder="City" name="city" value="Seattle">
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label class="required go-right">Postal</label>
+                      <input id="card-holder-postalcode" class="form-control" type="text" placeholder="Zip Code" name="postalcode" value="98004">
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+                  <div class="col-md-12">
+                    <div class="form-group ">
+                      <label class="required go-right">Address</label>
+                      <textarea class="form-control" placeholder="Address" rows="1" name="address">travelnow</textarea>
+                    </div>
+                  </div>
+                  <div class="clearfix"></div>
+              <div class="panel panel-default btn_section" style="display:none;">
+                <div class="panel-body">
+                  <center>
+                </center></div>
+              </div>
+              <div class="clearfix"></div>
+                  <hr style="margin-top:10px;margin-bottom:10px">
+                <div class="form-group">
+                <div class="col-md-6">
+            <label class="required go-right">Card Type</label>
+                <select class="form-control" name="" id="">
+              <option value="">Select Card</option>
+                <option value="AX"> American Express </option>
+                <option value="BC"> BC Card </option>
+                <option value="DC"> DINERS CLUB INTERNATIONAL </option>
+                <option value="DS"> Discover </option>
+                <option value="JC"> JCB </option>
+                <option value="CA" selected=""> Master Card </option>
+                <option value="VI"> Visa </option>
+              </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="required">Card Number</label>
+                    <input type="text" class="form-control" name="cardno" id="card-number" pattern=".{12,}" required="" title="12 characters minimum" placeholder="Credit Card Number" onkeypress="return isNumeric(event)" value="5401999999999999">
+                </div>
+                <div class="clearfix"></div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group ">
+                    <label class="required">Expiration Date</label>
+                        <select class="form-control" name="" id="">
+                      <option value="01">Jan (01)</option>
+                      <option value="02">Feb (02)</option>
+                      <option value="03">Mar (03)</option>
+                      <option value="04">Apr (04)</option>
+                      <option value="05">May (05)</option>
+                      <option value="06">June (06)</option>
+                      <option value="07">July (07)</option>
+                      <option value="08">Aug (08)</option>
+                      <option value="09">Sep (09)</option>
+                      <option value="10">Oct (10)</option>
+                      <option value="11">Nov (11)</option>
+                      <option value="12">Dec (12)</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-3 go-left">
+                  <div class="form-group">
+                    <label class="required go-right">&nbsp;</label>
+                        <select class="form-control" name="" id="">
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                  </select>
+                  </div>
+                </div>
+                <div class="col-md-3 go-left">
+                  <div class="form-group">
+                    <label class="required go-right">Card CVV</label>
+                    <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Card CVV" value="123">
+                  </div>
+                </div>
+                <div class="col-md-3 go-left">
+                  <label class="required go-right">&nbsp;</label>
+                  <img src="http://localhost/Dropbox/travel/assets/img/cc.png" class="img-responsive">
+                </div>
+                <div class="clearfix"></div>
+                <hr>
+                <div class="row">
+                  <div class="col-md-12">
+                  <div class="form-group">
+                    <div class="col-md-12">
+                   <div class="pure-checkbox">
+                    <input name="policy" value="5" id="policy" type="checkbox">
+                    <label for="policy"> &nbsp; By clicking to complete this booking I acknowledge that I have read and accept the Rules &amp; Restrictions. <br>  <a href="http://developer.ean.com/terms/en/" target="blank"> &nbsp; Terms and Conditions</a>  </label>
+                  </div>
+                      <div class="alert alert-danger submitresult" style="display: none;"></div>
+                    </div>
+                      <span id="waiting"></span>
+                      <div class="col-md-12"><button type="submit" class="btn btn-success btn-lg btn-block paynowbtn" onclick="return expcheck();" name="guest">CONFIRM THIS BOOKING</button></div>
+                      <div class="clearfix"></div>
+                    </div>
+                  </div>
+                </div>
+              <div class="clearfix"></div>
+            </form>
+            </div>
+            </div>
+            </div>
+
+
+
+
+       			</div><!-- modal-content -->
+       		</div><!-- modal-dialog -->
+       	</div><!-- modal -->
+
+
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+    </body>
+</html>

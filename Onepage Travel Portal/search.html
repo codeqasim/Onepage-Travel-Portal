@@ -1,0 +1,194 @@
+<script src="assets/js/script.js"></script>
+<div class="tab-content col-md-3 col-sm-4 height">
+    <div role="tabpanel" class="tab-pane wow fadeInLeft searchbg" id="HOTELS">
+        <div class="inbox">Search </div>
+        <form autocomplete="off" action="" method="GET" role="search" class="ng-pristine ng-valid" onsubmit="return false;">
+            <div class="search_box">
+                <i class="fa fa-search"></i>
+                <input type="text" ng-model="searchLocation" placeholder="Desitination name" uib-typeahead="item as item.name for item in getResults($viewValue)" typeahead-template-url="resultsTemplate.html" typeahead-loading="loadingLocations" typeahead-min-length="3" typeahead-no-results="noResults" class="search_styling" typeahead-on-select="selectedLoc(searchLocation)">
+                <i ng-show="loadingLocations" class="glyphicon glyphicon-refresh"></i>
+                <div ng-show="noResults">
+                    <i class="glyphicon glyphicon-remove"></i> No Results Found
+                </div>
+            </div>
+            <div class="row">
+                <div id="" class="col-md-12 col-xs-12">
+                    <label class="hidden-xs">Check In / Check Out</label>
+                    <div class="clearfix"></div>
+                    <input date-range-picker name="date" class="form-control date-picker" type="text" ng-model="datePicker.date" options="{autoApply: true,autoUpdateInput: true, locale: {format: dateFormat}}" required/>
+                    <input type="hidden" name="checkin" ng-model="checkin">
+                    <input type="hidden" name="checkout" ng-model="checkout">
+                    <!-- <input date-range-picker id="daterange1" name="daterange1" ng-model="date" class="form-control" type="text" placeholder="Check In - Check Out" required=""> -->
+                </div>
+            </div>
+            <!--<div class="row">
+                <div id="" class="col-md-6 col-xs-6">
+                        <label class="hidden-xs">Adults</label>
+                        <div class="clearfix"></div>
+                <select name="adultscount" class="form-control" ng-model="adultsCount" ng-options="adults for adults in [1,2,3,4]"></select>
+                </div>
+                <div id="" class="col-md-6 col-xs-6">
+                        <label class="hidden-xs">Child</label>
+                        <div class="clearfix"></div>
+                <select name="childcount" class="form-control" ng-model="childCount" ng-options="child for child in [0,1,2]"></select>
+                </div>
+                </div>-->
+            <div class="row">
+                <div id="" class="col-md-12 col-xs-6">
+                    <br>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">1 Room</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="hidden-xs">Adults</label>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">-</button>
+                                        </span>
+                                        <input type="text" class="form-control text-center" placeholder="" value="2">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">+</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="hidden-xs">Children</label>
+                                    <div class="input-group">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">-</button>
+                                        </span>
+                                        <input type="text" class="form-control text-center" placeholder="" value="0">
+                                        <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">+</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="" class="col-md-12 col-xs-6">
+                    <button style="margin-bottom:10px" class="btn btn-success btn-xs"><i class="fa fa-plus"></i> Add Room</button>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <div class="row">
+                    <div class="clearfix"></div>
+                    <button class="btn-primary btn btn-lg btn-block" ng-click="search()">SEARCH</button>
+                </div>
+            </div>
+        </form>
+        <!--<div class="clearfix"></div>
+            <hr style="background:#373e45;border-color:#797979">
+            <a href="#" class="inbox_styling">Teams<span class="counting">4</span></a>
+            <br><a href="#" class="inbox_styling">Groups<span class="counting">3</span></a>
+            <br><a href="#" class="inbox_styling">Channels<span class="counting">18</span></a>
+            <br><a href="#" class="inbox_styling">Locations</a>-->
+    </div>
+    <div role="tabpanel" class="tab-pane wow fadeInLeft searchbg" id="FLIGHTS">
+        <div class="inbox">Search </div>
+        <div class="search_box">
+            <i class="fa fa-search"></i>
+            <input class="search_styling" type="text" placeholder="Departure city">
+        </div>
+        <div class="search_box">
+            <i class="fa fa-search"></i>
+            <input class="search_styling" type="text" placeholder="Arrival city">
+        </div>
+        <div class="row">
+            <div id="" class="col-md-12 col-xs-6">
+                <label class="hidden-xs">Type</label>
+                <div class="clearfix"></div>
+                <select name="" id="" class="form-control">
+                    <option selected value="1">Return</option>
+                    <option value="2">Oneway</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div id="" class="col-md-6 col-xs-6">
+                <label class="hidden-xs">Depart date</label>
+                <div class="clearfix"></div>
+                <input class="form-control" type="text" placeholder="Check in" name="" value="" required="">
+            </div>
+            <div id="" class="col-md-6 col-xs-6">
+                <label class="hidden-xs">Arrival date</label>
+                <div class="clearfix"></div>
+                <input class="form-control" type="text" placeholder="Check out" name="" value="" required="">
+            </div>
+        </div>
+        <div class="row">
+            <div id="" class="col-md-4 col-xs-4">
+                <label class="hidden-xs">Adults</label>
+                <div class="clearfix"></div>
+                <select name="" id="" class="form-control">
+                    <option value="1">1</option>
+                    <option selected value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div id="" class="col-md-4 col-xs-4">
+                <label class="hidden-xs">Childrens</label>
+                <div class="clearfix"></div>
+                <select name="" id="" class="form-control">
+                    <option selected value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+            <div id="" class="col-md-4 col-xs-4">
+                <label class="hidden-xs">Infant</label>
+                <div class="clearfix"></div>
+                <select name="" id="" class="form-control">
+                    <option selected value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12 col-xs-12">
+            <div class="row">
+                <label class="lab hidden-xs hidden-sm">&nbsp;</label>
+                <div class="clearfix"></div>
+                <button type="submit" class="btn-primary btn btn-lg btn-block" >SEARCH</button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <hr style="background:#373e45;border-color:#797979">
+        <a href="#" class="inbox_styling">Teams
+        <span class="counting">4</span>
+        </a>
+        <br>
+        <a href="#" class="inbox_styling">Groups
+        <span class="counting">3</span>
+        </a>
+        <br>
+        <a href="#" class="inbox_styling">Channels
+        <span class="counting">18</span>
+        </a>
+        <br>
+        <a href="#" class="inbox_styling">Locations
+        </a>
+    </div>
+</div>
+</div>
+<!-- Results Template -->
+<script type="text/ng-template" id="resultsTemplate.html">
+    <a>
+            <i class="iti-flag {{match.model.countryCode | lowercase}}"></i>
+            <span ng-bind-html="match.label | uibTypeaheadHighlight:query"></span>
+    </a>
+</script>
+<!-- End Results Template -->

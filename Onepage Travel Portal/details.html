@@ -1,0 +1,149 @@
+<div class="col-md-5 height details wow fadeIn" data-wow-duration="1s" data-wow-delay="1s" ng-show="showDetailsSection">
+    <div style="background-color:white" class="row">
+        <div class="alert alert-danger" ng-show="details.error">
+            {{ results.errorMsg }}
+        </div>
+        <div class="col-xs-8">
+            <span class="textline"><strong>{{details.title}}</strong></span>  <small class="textline"> {{details.address}}</small>
+            <div class="clearfix"></div>
+            <div class="m5"><stars total="details.rating"></stars></div>
+        </div>
+        <a href="javascript:void(0)" data-toggle="collapse" data-target="#MAP" aria-expanded="false" aria-controls="MAP">
+            <div class="col-xs-2 head">
+                <i class="fa fa-map-marker star_icon"></i>
+            </div>
+        </a>
+        <a href="javascript:void(0)"  data-toggle="collapse" data-target="#PHONE" aria-expanded="false" aria-controls="PHONE">
+            <div class="col-xs-2 head">
+                <i class="fa fa-phone star_icon"></i>
+            </div>
+        </a>
+        <div class="clearfix"></div>
+        <div class="collapse scroll-300" id="MAP">
+            <iframe ng-src="{{mapUrl}}" width="100%" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div class="collapse" id="PHONE">
+            <h3 class="text-center well m0"><i class="fa fa-phone"></i> +92-3311-442244</h3>
+        </div>
+    </div>
+    <hr style="background:#373e45;border-color:#dce1e1 ; margin-top:0 ; margin-bottom:0">
+    <div ng-show="showDetailsLoading"  id="preloader">
+        <div  class="loader absolute-center"></div>
+    </div>
+    <div style="overflow-y:auto;height:87%;margin-right: -15px;margin-left: -15px;" class="scroll">
+        <div style="margin-top:10px">
+            <div style="margin-right:-15px;padding-right: 17px;" class="col-md-6 animated fadeIn">
+                <a href="#" data-toggle="modal" data-target="#image">
+                <img style="height: 207px;;margin-top: 2px;width: 100%;background: rgba(16, 81, 172, 0.22);" class="img-responsive" ng-src="{{mainImg}}" />
+                </a>
+            </div>
+            <div class="col-md-6 scroll-210">
+                <div class="row">
+                    <div class="col-lg-4 col-md-3 p0" ng-repeat="(key, img) in details.images">
+                        <img style="padding:1.5px;height: 70px;width:100%;cursor:pointer;" class="" ng-click="selectImg(img.thumbnail)" ng-src="{{img.thumbnail}}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+        <div>
+
+
+        <!-- Modal -->
+                <div id="book" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h4 class="modal-title">Modal Header</h4>
+                            </div>
+                            <div class="modal-body">
+                                <img style="height: 400px;;margin-top: 2px;width: 100%;" class="img-responsive" ng-src="{{mainImg}}" />
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            <!-- Nav tabs -->
+            <div class="col-lg-12">
+                <br>
+                <!-- Tab panes -->
+                        <div class="col-md-12">
+                            <div class="row">
+                                <div class="expand-wrapper">
+                                    <div class="hideText">
+                                        <p ng-bind-html="details.description"></p>
+                                    </div>
+                                    <div class="expandText">
+                                        <p ng-bind-html="details.description"></p>
+                                    </div>
+                                    <a href="javascript: void()" class="more" ng-hide="show" ng-click="show = true"><strong>Read More...</strong></a>
+                                    <a href="javascript: void()" class="less" ng-show="show" ng-click="show = false"><strong>Read Less...</strong></a>
+                                </div>
+                                <div class="clearfix"></div>
+                                <br>
+                                <p ng-class="roomDetails.totalRooms == 1 ? 'hide' : ''"><strong>{{ roomDetails.totalRooms }} Rooms Available </strong></p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!-- Room block -->
+                        <div style="border-top:1px solid rgba(39, 46, 53, 0.15)" class="resultsbg" ng-repeat="(key, resp) in roomDetails.roomsList">
+                            <a href="#">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-lg-2 col-md-5 col-xs-3d">
+                                            <div class="row">
+                                                <div class="load">
+                                                    <img class="img-responsive" ng-src="{{resp.thumbnail}}">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-10 col-md-7 col-xs-8 go-left">
+                                            <div class="col-md-7">
+                                                <strong class="card-info"> {{resp.title}} </strong>
+                                                <div class="clearfix"></div>
+                                                <div class="price">
+                                                    <span style="font-size:13px">{{resp.currency}}</span> {{resp.roomPrice}}
+                                                </div>
+                                            </div>
+                                            <div class="col-md-5">
+                                                <button class="booknow btn btn-info pull-right">Book Now</button>
+                                                <button class="roomdetails btn btn-danger pull-right">Details</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </a>
+                        </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+$(function(){
+  $(".expandText").hide();
+  $(".more").on("click",function(){
+    $(".more").hide();
+    $(".less").show();
+    $(".hideText").fadeOut("fast");
+    $(".expandText").fadeIn("slow");
+
+  })
+
+  $(".less").on("click",function(){
+    $(".less").hide();
+    $(".more").show();
+    $(".expandText").fadeOut("fast");
+    $(".hideText").fadeIn("slow");
+
+
+  })
+})
+</script>
